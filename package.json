@@ -76,7 +76,7 @@
   "*.js": [
     "eslint --fix",
     "prettier --write",
-    "npm test"
+    "jest --findRelatedTests"
   ]
 }
 
