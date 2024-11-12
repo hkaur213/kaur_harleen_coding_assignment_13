@@ -1,21 +1,47 @@
-import React, { useState } from 'react';
-import { DropdownProps } from './Dropdown.types';
-import { StyledDropdown } from './styled';
+import React from 'react';
+import styled from 'styled-components';
+import { IDropdown } from './Dropdown.types';
 
-const Dropdown: React.FC<DropdownProps> = ({ options }) => {
-  const [selected, setSelected] = useState<string | null>(null);
+const CustomSelect = styled.select`
+  padding: 12px;
+  border-radius: 5px;
+  border: solid 1px #b0b0b0;
+  background-color: white;
+  color: #444;
 
+  &:hover {
+    border-color: #a0a0a0;
+  }
+
+  &:disabled {
+    background-color: #f0f0f0;
+    color: #b0b0b0;
+    cursor: not-allowed;
+  }
+`;
+
+const Dropdown: React.FC<IDropdown> = ({
+  id,
+  name,
+  value,
+  onChange,
+  options,
+  disabled = false,
+}) => {
   return (
-    <StyledDropdown>
-      <select onChange={(e) => setSelected(e.target.value)}>
-        {options.map((option) => (
-          <option key={option} value={option}>
-            {option}
-          </option>
-        ))}
-      </select>
-      {selected && <span>Selected: {selected}</span>}
-    </StyledDropdown>
+    <CustomSelect
+      id={id}
+      name={name}
+      value={value}
+      onChange={onChange}
+      disabled={disabled}
+    >
+      {options.map((option) => (
+        <option key={option.value} value={option.value}>
+          {option.label}
+        </option>
+      ))}
+    </CustomSelect>
   );
 };
 

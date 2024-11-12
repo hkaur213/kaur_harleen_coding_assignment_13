@@ -1,14 +1,39 @@
 import React from 'react';
-import { RadioButtonProps } from './RadioButton.types';
-import { StyledRadio } from './styled';
+import styled from 'styled-components';
+import { IRadio } from './RadioButton.types';
 
-const RadioButton: React.FC<RadioButtonProps> = ({ label, checked }) => {
+const CustomRadio = styled.input.attrs({ type: 'radio' })`
+  margin: 8px;
+  cursor: ${({ disabled }) => (disabled ? 'not-allowed' : 'pointer')};
+  transition: transform 0.2s ease-in-out;
+
+  &:hover {
+    transform: scale(1.1);
+  }
+
+  &:disabled {
+    opacity: 0.6;
+  }
+`;
+
+const Radio: React.FC<IRadio> = ({
+  id,
+  name,
+  value,
+  checked,
+  disabled,
+  onChange,
+}) => {
   return (
-    <StyledRadio>
-      <input type="radio" checked={checked} />
-      {label}
-    </StyledRadio>
+    <CustomRadio
+      id={id}
+      name={name}
+      value={value}
+      checked={checked}
+      disabled={disabled}
+      onChange={onChange}
+    />
   );
 };
 
-export default RadioButton;
+export default Radio;

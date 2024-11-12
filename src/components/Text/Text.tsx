@@ -1,9 +1,43 @@
 import React from 'react';
-import { TextProps } from './Text.types';
-import { StyledText } from './styled';
+import styled, { css } from 'styled-components';
+import { IText } from './Text.types';
 
-const Text: React.FC<TextProps> = ({ content }) => {
-  return <StyledText>{content}</StyledText>;
+const CustomText = styled.span<IText>`
+  font-family: 'Arial', sans-serif;
+  font-size: ${({ types }) =>
+    types === 'header' ? '1.5rem' : types === 'paragraph' ? '1rem' : '0.75rem'};
+  font-weight: ${({ bold }) => (bold ? 'bold' : 'normal')};
+  font-style: ${({ italic }) => (italic ? 'italic' : 'normal')};
+  color: ${({ disabled }) => (disabled ? '#999' : '#333')};
+  ${({ disabled }) =>
+    disabled &&
+    css`
+      background-color: #eee;
+      cursor: not-allowed;
+      opacity: 0.6;
+    `}
+  transition: opacity 0.3s ease-in-out;
+`;
+
+const Text: React.FC<IText> = ({
+  types = 'paragraph',
+  bold = false,
+  italic = false,
+  disabled = false,
+  text,
+  ...props
+}) => {
+  return (
+    <CustomText
+      types={types}
+      bold={bold ? true : undefined} // Only pass if bold is true
+      italic={italic ? true : undefined} // Only pass if italic is true
+      disabled={disabled} // Pass as is
+      {...props}
+    >
+      {text}
+    </CustomText>
+  );
 };
 
 export default Text;

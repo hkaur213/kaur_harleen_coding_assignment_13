@@ -1,2 +1,1 @@
-// src/components/HeroImage/index.ts
-export {};
+export { default as HeroImg } from './HeroImage';

@@ -1,0 +1,11 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`Img Component Tests matches snapshot 1`] = `
+<DocumentFragment>
+  <img
+    alt="Test Image"
+    class="sc-blHHSb exoPBh"
+    src="test.jpg"
+  />
+</DocumentFragment>
+`;

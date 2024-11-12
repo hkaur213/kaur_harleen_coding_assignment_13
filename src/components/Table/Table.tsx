@@ -1,9 +1,21 @@
+// Table.tsx
 import React from 'react';
-import { TableProps } from './Table.types';
-import { StyledTable } from './styled';
+import styled from 'styled-components';
 
-const Table: React.FC<TableProps> = ({ children }) => {
-  return <StyledTable>{children}</StyledTable>;
+const StyledTable = styled.table<{ disabled?: boolean }>`
+  width: 100%;
+  border-collapse: collapse;
+  background-color: ${(props) => (props.disabled ? 'lightgrey' : 'white')};
+  color: ${(props) => (props.disabled ? 'darkgrey' : 'black')};
+  cursor: ${(props) => (props.disabled ? 'not-allowed' : 'default')};
+  opacity: ${(props) => (props.disabled ? 0.5 : 1)};
+`;
+
+const Table: React.FC<{ disabled?: boolean; children: React.ReactNode }> = ({
+  disabled,
+  children,
+}) => {
+  return <StyledTable disabled={disabled}>{children}</StyledTable>;
 };
 
 export default Table;

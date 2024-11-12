@@ -1,2 +1,1 @@
-// src/components/Card/index.ts
-export {};
+export { default as Card } from './Card';

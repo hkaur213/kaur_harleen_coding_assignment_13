@@ -1,2 +1,1 @@
-// src/components/Label/index.ts
-export {};
+export { default as Label } from './Label';

@@ -1,14 +1,22 @@
 import React from 'react';
-import { CardProps } from './Card.types';
-import { StyledCard } from './styled';
 
-const Card: React.FC<CardProps> = ({ title, content }) => {
+interface CardProps {
+  title?: string;
+  content?: string;
+  disabled?: boolean;
+  imageUrl?: string;
+  buttonText?: string;
+  onButtonClick?: () => void;
+}
+
+const Card: React.FC<CardProps> = ({ title, content, disabled }) => {
   return (
-    <StyledCard>
-      <h3>{title}</h3>
-      <p>{content}</p>
-    </StyledCard>
+    <div data-testid="card-container" style={{ opacity: disabled ? 0.4 : 1 }}>
+      <h2>{title}</h2>
+      <p>{disabled ? 'Content not available' : content}</p>
+    </div>
   );
 };
 
+// Default export
 export default Card;

@@ -1,4 +1,7 @@
-export interface TextProps {
-    content: string;
-  }
-  
+export interface IText {
+  text?: string;
+  types?: 'header' | 'paragraph' | 'copyright';
+  bold?: boolean;
+  italic?: boolean;
+  disabled?: boolean;
+}

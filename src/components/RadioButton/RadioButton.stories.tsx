@@ -1,9 +1,12 @@
 import React from 'react';
-import RadioButton from './RadioButton';
+import Radio from './RadioButton';
 
 export default {
-  title: 'Components/RadioButton',
-  component: RadioButton,
+  title: 'Components Assignment/Radio',
+  component: Radio,
 };
 
-export const Default = () => <RadioButton label="Radio Button" />;
+export const Default = () => <Radio id="radio1" name="radio" value="value1" />;
+export const Disabled = () => (
+  <Radio id="radio2" name="radio" value="value2" disabled />
+);
