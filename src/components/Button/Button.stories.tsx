@@ -21,7 +21,7 @@ PrimaryButton.args = {
 export const SmallButton = ButtonTemplate.bind({});
 SmallButton.args = {
   primary: true,
-  size: 'small',
+  size: 'large',
   text: 'Click Small',
 };
 
